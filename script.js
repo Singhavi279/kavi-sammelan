@@ -1,3 +1,11 @@
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    if (loader) loader.classList.add('hidden');
+  }, 800); // 800ms delay for premium feel
+});
+
 const menuButton = document.querySelector('.menu');
 const nav = document.querySelector('nav');
 

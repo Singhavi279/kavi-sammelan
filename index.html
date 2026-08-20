@@ -14,8 +14,15 @@
 </head>
 <body>
 
-  <!-- 1. Top Disclaimer Strip -->
-  <div class="notice">Proposed 2026–27 journey. Dates, venues aur artist line-ups final confirmation ke subject hain.</div>
+  <!-- Page Loader -->
+  <div id="loader" class="loader-wrapper">
+    <div class="loader-content">
+      <div class="quill-icon">✒️</div>
+      <h2>शाम-ए-अवध</h2>
+    </div>
+  </div>
+
+
 
   <!-- 2. Header with Navigation -->
   <header class="site-header">
@@ -38,7 +45,7 @@
       <div class="pattern"></div>
       <div class="hero-copy reveal">
         <p class="eyebrow">NAVBHARAT TIMES PRESENTS</p>
-        <h1>Navbharat Times Kavi Sammelan</h1>
+        <h1>Kavi Sammelan</h1>
         <h2>Shaam-e-Awadh | Lucknow Edition</h2>
         <p style="font-weight: 600; font-size: 1.2rem; color: var(--gold2); margin-top: 15px;">A Grand (Bhavya) Kavi Sammelan ki Shaam aapke Lucknow</p>
         <p>Navbharat Times lekar aa raha hai ek bhavya Kavi Sammelan shaam, jahan har raas jaise shayari, geet, ghazal, veer ras aur samajik kavya ke zariye Awadh ki tehzeeb ko celebrate kiya jayega.</p>
@@ -62,6 +69,9 @@
       <div class="intro-copy reveal">
         <p>Navbharat Times Kavi Sammelan Series 2026–27 ek premium multi-city cultural IP hai, jo Hindi speaking India ke sabse influential shahron mein poetry, humour, culture aur city pride ko ek grand auditorium experience mein lekar aayega.</p>
         <p>Is series ka maksad sirf ek stage event karna nahi hai, balki Hindi kavya aur live mehfil ko ek modern media-led format mein present karna hai – jahan on-ground experience ke saath YouTube aur social media amplification bhi ho.</p>
+        <div style="margin-top: 30px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 45px rgba(0,0,0,0.2);">
+          <img src="heritage_manuscript.jpg" alt="Vintage Poetry Manuscript" style="width: 100%; display: block;" />
+        </div>
       </div>
     </section>
 
@@ -94,13 +104,7 @@
 
     <!-- 6. Why Kavi Sammelan — Tehzeeb aur Sanskriti ka Gathjod -->
     <section class="section why" id="why-sammelan">
-      <div class="why-visual reveal">
-        <div class="paper">
-          <b>Kavi Sammelan</b>
-          <h3>Tehzeeb aur Sanskriti ka Gathjod</h3>
-          <i></i><i></i><i></i>
-        </div>
-        <div class="mini-stage">🎙️</div>
+      <div class="why-visual reveal" style="background: url('awadhi_archway.jpg') center / cover; border-radius: 24px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
       </div>
       <div class="section-head reveal">
         <h2>Language becomes experience.</h2>
@@ -167,12 +171,13 @@
     </section>
 
     <!-- 9. Audience Profile -->
-    <section class="section audience-section" id="audience">
-      <div class="section-title reveal">
+    <section class="section audience-section" id="audience" style="position: relative;">
+      <div style="position: absolute; inset: 0; background: url('floral_bg.jpg') center / cover; opacity: 0.15; mix-blend-mode: overlay; pointer-events: none;"></div>
+      <div class="section-title reveal" style="position: relative; z-index: 1;">
         <h2>Not a generic crowd. A curated, dignified cultural gathering.</h2>
         <p>Shaam-e-Awadh mein Lucknow ke selected aur influential audience segments ko invite kiya jayega. Focus hoga quality audience, family-friendly environment aur city ke respected stakeholders par.</p>
       </div>
-      <div class="tags reveal">
+      <div class="tags reveal" style="position: relative; z-index: 1;">
         <span>Prominent city celebrities and public faces</span>
         <span>Policymakers and senior public representatives</span>
         <span>Senior bureaucrats and civic leaders</span>
