@@ -50,7 +50,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px max(22px, calc((100vw - 1180px) / 2));
+  padding: 15px max(95px, calc((100vw - 1180px) / 2));
   background: rgba(45, 5, 9, 0.96);
   backdrop-filter: blur(14px);
   color: white;
@@ -103,7 +103,7 @@ nav a {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 50px;
   align-items: center;
-  padding: 70px max(22px, calc((100vw - 1180px) / 2));
+  padding: 70px max(95px, calc((100vw - 1180px) / 2));
   overflow: hidden;
   background:
     radial-gradient(
@@ -240,7 +240,7 @@ h4 {
   }
 }
 .section {
-  padding: 110px max(22px, calc((100vw - 1180px) / 2));
+  padding: 110px max(95px, calc((100vw - 1180px) / 2));
 }
 .section h2,
 .section-title h2,
@@ -798,7 +798,7 @@ footer {
   display: flex;
   justify-content: space-between;
   gap: 30px;
-  padding: 35px max(22px, calc((100vw - 1180px) / 2));
+  padding: 35px max(95px, calc((100vw - 1180px) / 2));
   background: #160203;
   color: white;
 }
@@ -970,3 +970,17 @@ footer p {
 .shahi-frame .top-right { top: -2px; right: -2px; transform: rotate(90deg); }
 .shahi-frame .bottom-right { bottom: -2px; right: -2px; transform: rotate(180deg); }
 .shahi-frame .bottom-left { bottom: -2px; left: -2px; transform: rotate(270deg); }
+
+@media (max-width: 900px) {
+  .site-header { padding: 15px 45px; }
+  .hero { padding-left: 45px; padding-right: 45px; }
+  .section { padding-left: 45px; padding-right: 45px; }
+  .shahi-frame .corner { width: 50px; height: 50px; }
+}
+
+@media (max-width: 600px) {
+  .site-header { padding: 15px 25px; }
+  .hero { padding-left: 25px; padding-right: 25px; }
+  .section { padding-left: 25px; padding-right: 25px; }
+  .shahi-frame .corner { display: none; }
+}
