@@ -118,13 +118,8 @@ nav a {
   position: absolute;
   inset: 0;
   opacity: 0.25;
-  background-image: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.12) 1px,
-    transparent 1px
-  );
-  background-size: 26px 26px;
-  mask-image: linear-gradient(#000, transparent);
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23efc06b' stroke-width='1.5' stroke-dasharray='3 3' opacity='0.6'%3E%3Cpath d='M40 0c0 22.09-17.91 40-40 40 22.09 0 40 17.91 40 40 0-22.09 17.91-40 40-40-22.09 0-40-17.91-40-40z'/%3E%3Ccircle cx='40' cy='40' r='4' fill='%23efc06b' stroke='none'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  mask-image: linear-gradient(#000 60%, transparent);
 }
 .hero-copy,
 .stage {
@@ -951,3 +946,27 @@ footer p {
     font-size: 10px;
   }
 }
+
+/* --- Royal Shahi Paigaam Frame --- */
+.shahi-frame {
+  position: fixed;
+  top: 15px; left: 15px; right: 15px; bottom: 15px;
+  border: 1px solid rgba(239, 192, 107, 0.25);
+  pointer-events: none;
+  z-index: 9999;
+}
+.shahi-frame::before {
+  content: "";
+  position: absolute;
+  top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px dashed rgba(239, 192, 107, 0.35);
+}
+.shahi-frame .corner {
+  position: absolute;
+  width: 90px; height: 90px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg stroke='%23efc06b' fill='none' opacity='0.8'%3E%3Cpath stroke-width='1.5' d='M5,5 Q40,40 20,75 Q10,85 10,100' /%3E%3Cpath stroke-width='1.5' d='M5,5 Q40,40 75,20 Q85,10 100,10' /%3E%3Cpath stroke-width='1' stroke-dasharray='3 3' d='M25,25 Q50,50 30,85' /%3E%3Cpath stroke-width='1' stroke-dasharray='3 3' d='M25,25 Q50,50 85,30' /%3E%3Ccircle cx='45' cy='45' r='2.5' fill='%23efc06b'/%3E%3Ccircle cx='20' cy='20' r='1.5' fill='%23efc06b'/%3E%3C/g%3E%3C/svg%3E");
+}
+.shahi-frame .top-left { top: -2px; left: -2px; transform: rotate(0deg); }
+.shahi-frame .top-right { top: -2px; right: -2px; transform: rotate(90deg); }
+.shahi-frame .bottom-right { bottom: -2px; right: -2px; transform: rotate(180deg); }
+.shahi-frame .bottom-left { bottom: -2px; left: -2px; transform: rotate(270deg); }
