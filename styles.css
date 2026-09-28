@@ -504,7 +504,7 @@ h4 {
   display: grid;
   place-items: center;
   aspect-ratio: 1;
-  border-radius: 50%;
+  border-radius: 12px;
   background: radial-gradient(circle at 30% 20%, #fff0c6, #d2a04a 60%, #754210);
   color: #2a0809;
   font: 700 30px var(--serif);
