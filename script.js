@@ -1,68 +1,115 @@
-// Loader
+/* ═══════════════════════════════════════════════
+   Grand Shaam-e-Awadh — Interaction Layer
+   Lightweight, performance-conscious JS
+   ═══════════════════════════════════════════════ */
+
+// --- Loader: Fast dismiss ---
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    const loader = document.getElementById('loader');
-    if (loader) loader.classList.add('hidden');
-  }, 800); // 800ms delay for premium feel
-});
-
-const menuButton = document.querySelector('.menu');
-const nav = document.querySelector('nav');
-
-menuButton.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded', open);
-  menuButton.textContent = open ? '✕' : '☰';
-});
-
-nav.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    nav.classList.remove('open');
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.textContent = '☰';
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      if (loader) loader.classList.add('hidden');
+    }, 600);
   });
 });
 
+// --- Mobile Navigation ---
+const menuButton = document.querySelector('.menu');
+const nav = document.querySelector('nav');
+
+if (menuButton && nav) {
+  menuButton.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.textContent = open ? '✕' : '☰';
+  });
+
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = '☰';
+    });
+  });
+}
+
+// --- Header scroll state ---
+const header = document.getElementById('site-header');
+if (header) {
+  let lastKnown = 0;
+  let ticking = false;
+
+  const updateHeader = () => {
+    if (lastKnown > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    lastKnown = window.scrollY;
+    if (!ticking) {
+      requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+// --- Scroll Reveal (IntersectionObserver) ---
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReducedMotion) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+    revealObserver.observe(el);
+  });
+} else {
+  // Immediately show all elements if reduced motion is preferred
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+    el.classList.add('visible');
+  });
+}
+
+
+// --- City Tabs ---
 const cities = {
   lucknow: {
-    letter: 'L',
-    subtitle: 'City of Tehzeeb',
-    date: 'September 2026 — Proposed Opening Edition',
+    date: 'October 2026',
     name: 'Lucknow',
-    tagline: 'Shaam-e-Awadh | तहज़ीब के शहर में, शब्दों की एक यादगार महफ़िल।',
-    description: 'Lucknow sirf ek shahar nahi, ek andaaz hai. Yahan ki tehzeeb, adab, zubaan aur shayari ne hamesha Hindi-Urdu culture ko ek khaas pehchaan di hai.'
+    tagline: 'Grand Shaam-e-Awadh | City of Tehzeeb',
   },
   bhopal: {
-    letter: 'B',
-    subtitle: 'City of Shayari, Ghazal and Literary Depth',
-    date: 'November 2026 — Proposed Edition',
+    date: 'November 2026 — Proposed',
     name: 'Bhopal',
-    tagline: 'Shayari aur Ghazal ka Shahar',
-    description: 'Bhopal will host a carefully curated evening of poetry, humour, reflection and contemporary expression in a premium auditorium setting.'
+    tagline: 'City of Shayari, Ghazal and Literary Depth',
   },
   jaipur: {
-    letter: 'J',
-    subtitle: 'Heritage, Royalty and Cultural Pride',
-    date: 'January / February 2027 — Proposed Edition',
+    date: 'January / February 2027 — Proposed',
     name: 'Jaipur',
-    tagline: 'Tradition, expression and city pride on one stage.',
-    description: 'The Jaipur edition will celebrate the enduring relationship between language, performance, community and cultural identity.'
+    tagline: 'Heritage, Royalty and Cultural Pride',
   },
   patna: {
-    letter: 'P',
-    subtitle: 'High-energy Hindi Heartland Market',
-    date: 'January / February 2027 — Proposed Edition',
+    date: 'January / February 2027 — Proposed',
     name: 'Patna',
-    tagline: 'Memorable words for an audience deeply connected with Hindi.',
-    description: 'The Patna edition will bring humour, lyrical poetry, powerful expression and social observation to a highly engaged audience.'
+    tagline: 'High-energy Hindi Heartland',
   },
   delhi: {
-    letter: 'D',
-    subtitle: 'National Capital / Grand Finale Edition',
     date: 'March 2027 — Proposed Grand Finale',
     name: 'Delhi',
-    tagline: 'The journey culminates in its biggest celebration.',
-    description: 'The Delhi edition is planned as the flagship grand finale, bringing together leading voices and the collective energy of the entire series.'
+    tagline: 'National Capital | Grand Finale Edition',
   }
 };
 
@@ -71,14 +118,15 @@ document.querySelectorAll('.city-tabs button').forEach(btn => {
     document.querySelectorAll('.city-tabs button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const c = cities[btn.dataset.city];
-    document.getElementById('city-letter').textContent = c.letter;
-    document.getElementById('city-subtitle').textContent = c.subtitle;
-    document.getElementById('city-date').textContent = c.date;
-    document.getElementById('city-name').textContent = c.name;
-    document.getElementById('city-tagline').textContent = c.tagline;
-    document.getElementById('city-description').textContent = c.description;
-    document.getElementById('city-cta').textContent = `Notify Me About ${c.name}`;
+    const dateEl = document.getElementById('city-date');
+    const nameEl = document.getElementById('city-name');
+    const taglineEl = document.getElementById('city-tagline');
     
+    if (dateEl) dateEl.textContent = c.date;
+    if (nameEl) nameEl.textContent = c.name;
+    if (taglineEl) taglineEl.textContent = c.tagline;
+
+    // Also update registration form city selection
     const citySelect = document.querySelector('form#interest-form [name="city"]');
     if (citySelect) {
       citySelect.value = c.name;
@@ -86,50 +134,8 @@ document.querySelectorAll('.city-tabs button').forEach(btn => {
   });
 });
 
-const tiers = {
-  presenting: [
-    'Lead the cultural association',
-    'Premium naming aur visibility across the proposed event journey, subject to final deliverables aur city selection.'
-  ],
-  powered: [
-    'Build high-frequency brand presence',
-    'Prominent on-ground aur digital integration across selected cities aur content formats.'
-  ],
-  associate: [
-    'Own meaningful audience touchpoints',
-    'A balanced mix of stage visibility, hospitality aur content-led association.'
-  ],
-  city: [
-    'Celebrate a city with cultural relevance',
-    'A locally rooted partnership aligned with the identity aur audiences of a selected host city.'
-  ],
-  digital: [
-    'Extend the experience beyond the auditorium',
-    'Digital-first integrations across video, social content, edits aur event microsite visibility.'
-  ]
-};
 
-document.querySelectorAll('.tier').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tier').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const [title, copy] = tiers[btn.dataset.tier];
-    document.getElementById('tier-title').textContent = title;
-    document.getElementById('tier-copy').textContent = copy;
-  });
-});
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+// --- Form Handling ---
 const interestForm = document.getElementById('interest-form');
 if (interestForm) {
   interestForm.addEventListener('submit', e => {
@@ -142,7 +148,7 @@ if (interestForm) {
       form.reportValidity();
       return;
     }
-    status.textContent = 'Thank you for showing interest in Navbharat Times Kavi Sammelan - Shaam-e-Awadh. Your details have been received. Our team may contact you closer to the event, subject to registration process, venue capacity and confirmation.';
+    status.textContent = 'Thank you for your interest in Grand Shaam-e-Awadh. Your details have been received. Our team may contact you once registrations open.';
     status.style.color = '#24613f';
     form.reset();
   });
@@ -160,7 +166,7 @@ if (partnerForm) {
       form.reportValidity();
       return;
     }
-    status.textContent = 'Thank you for your partnership interest. The Navbharat Times team will review your enquiry and connect with you shortly.';
+    status.textContent = 'Thank you for your partnership interest. Our team will review your enquiry and connect with you shortly.';
     status.style.color = '#24613f';
     form.reset();
   });
