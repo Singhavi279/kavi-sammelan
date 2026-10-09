@@ -3,14 +3,16 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#180204" />
+  <script>document.documentElement.classList.add("js")</script>
   <meta name="description"
-    content="Grand Shaam-e-Awadh: A premier evening of Hindi poetry, Awadhi culture, and the felicitation of Lucknow's finest. Presented by Navbharat Times. 25 October 2026, Lucknow." />
+    content="Grand Shaam-e-Awadh: A premier evening of Hindi poetry, Awadhi culture, and the felicitation of Lucknow's finest. Presented by Navbharat Times. 27 November 2026, Lucknow." />
   <meta name="keywords"
     content="Kavi Sammelan, Grand Shaam-e-Awadh, Lucknow Events, Hindi Poetry, Shayari, Ghazal, Navbharat Times, Cultural Event, Lucknow Ratna Samman, Awadhi Culture" />
   <meta property="og:title" content="Grand Shaam-e-Awadh | Navbharat Times Kavi Sammelan: Lucknow Edition" />
   <meta property="og:description"
-    content="Experience a grand evening of kavya, tehzeeb, sanskriti and the felicitation of Lucknow's finest achievers. 25 October 2026." />
+    content="Experience a grand evening of kavya, tehzeeb, sanskriti and the felicitation of Lucknow's finest achievers. 27 November 2026." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://navbharattimes.indiatimes.com/kavisammelan" />
   <meta property="og:image" content="https://navbharattimes.indiatimes.com/kavisammelan/hero_kavi.png" />
@@ -18,6 +20,7 @@
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✒️</text></svg>">
 
+  <link rel="preload" as="image" href="hero_kavi.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -34,8 +37,8 @@
         "@type": "Event",
         "name": "Grand Shaam-e-Awadh: Navbharat Times Kavi Sammelan",
         "description": "A premier cultural evening celebrating Hindi poetry, Awadhi tehzeeb, cultural performances, and the Lucknow Ratna Samman felicitation.",
-        "startDate": "2026-10-25T18:00:00+05:30",
-        "endDate": "2026-10-25T22:00:00+05:30",
+        "startDate": "2026-11-27T18:00:00+05:30",
+        "endDate": "2026-11-27T22:00:00+05:30",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
@@ -70,7 +73,7 @@
             "name": "When and where is the event?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The event is scheduled for 25 October 2026 in Lucknow. The specific venue will be announced closer to the date."
+              "text": "The event is scheduled for 27 November 2026 in Lucknow. The specific venue will be announced closer to the date."
             }
           },
           {
@@ -125,9 +128,12 @@
 
   <!-- Header -->
   <header class="site-header" id="site-header">
-    <a class="brand" href="#home"><span>Navbharat Times</span><strong>Kavi Sammelan</strong></a>
-    <button class="menu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <nav>
+    <div class="brand-group">
+      <a class="brand" href="#home"><img src="times-internet-logo.png" alt="Times Internet" /></a>
+      <a class="all-events" href="https://timeslanguages.in/" target="_blank" rel="noopener"><span class="all-events-dot" aria-hidden="true"></span>All Events</a>
+    </div>
+    <button class="menu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">☰</button>
+    <nav id="site-nav" aria-label="Primary">
       <a href="#about">The Series</a>
       <a href="#lucknow">Lucknow Edition</a>
       <a href="#ratna">Lucknow Ratna</a>
@@ -144,69 +150,43 @@
     <section class="hero" id="home">
       <div class="pattern"></div>
       <div class="hero-copy reveal">
-        <div class="hero-brands hero-brands-top">
-          <div class="hero-brand-nbt">
-            <div class="nbt-logo-wrap">
-              <img src="https://epaper.navbharattimes.com/images/logo2.png" alt="Navbharat Times" />
-            </div>
-            <p class="eyebrow">Presents</p>
+        <div class="hero-presenter">
+          <div class="nbt-logo-wrap">
+            <img src="https://epaper.navbharattimes.com/images/logo2.png" alt="Navbharat Times" />
           </div>
+          <span class="hero-presents">Presents</span>
         </div>
 
         <h1>
           <span class="hero-grand">Grand</span>
-          <span class="hero-title-row">
-            <svg class="hero-flourish hero-flourish-left" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M115 40C95 40 80 25 60 30C45 34 40 50 25 48C15 46 10 35 5 30" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M60 30C55 20 45 10 35 15C28 18 30 28 25 32" stroke="url(#goldGrad)" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M80 35C75 28 65 18 58 22" stroke="url(#goldGrad)" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M45 45C38 55 28 60 18 55" stroke="url(#goldGrad)" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="5" cy="30" r="3" fill="#d3a14c"/>
-              <circle cx="35" cy="15" r="2.5" fill="#d3a14c"/>
-              <circle cx="18" cy="55" r="2.5" fill="#d3a14c"/>
-              <circle cx="58" cy="22" r="2" fill="#d3a14c"/>
-              <ellipse cx="25" cy="48" rx="4" ry="3.5" fill="none" stroke="#d3a14c" stroke-width="1.2"/>
-              <path d="M25 44.5C25 44.5 22 46 22 48C22 50 25 51.5 25 51.5" stroke="#d3a14c" stroke-width="1"/>
-              <path d="M25 44.5C25 44.5 28 46 28 48C28 50 25 51.5 25 51.5" stroke="#d3a14c" stroke-width="1"/>
-              <defs><linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f0d294"/><stop offset="50%" stop-color="#d3a14c"/><stop offset="100%" stop-color="#b8862d"/></linearGradient></defs>
-            </svg>
-            <span class="hero-title-main">Shaam-e-Awadh</span>
-            <svg class="hero-flourish hero-flourish-right" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 40C25 40 40 25 60 30C75 34 80 50 95 48C105 46 110 35 115 30" stroke="url(#goldGrad2)" stroke-width="2" stroke-linecap="round"/>
-              <path d="M60 30C65 20 75 10 85 15C92 18 90 28 95 32" stroke="url(#goldGrad2)" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M40 35C45 28 55 18 62 22" stroke="url(#goldGrad2)" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M75 45C82 55 92 60 102 55" stroke="url(#goldGrad2)" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="115" cy="30" r="3" fill="#d3a14c"/>
-              <circle cx="85" cy="15" r="2.5" fill="#d3a14c"/>
-              <circle cx="102" cy="55" r="2.5" fill="#d3a14c"/>
-              <circle cx="62" cy="22" r="2" fill="#d3a14c"/>
-              <ellipse cx="95" cy="48" rx="4" ry="3.5" fill="none" stroke="#d3a14c" stroke-width="1.2"/>
-              <path d="M95 44.5C95 44.5 92 46 92 48C92 50 95 51.5 95 51.5" stroke="#d3a14c" stroke-width="1"/>
-              <path d="M95 44.5C95 44.5 98 46 98 48C98 50 95 51.5 95 51.5" stroke="#d3a14c" stroke-width="1"/>
-              <defs><linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#b8862d"/><stop offset="50%" stop-color="#d3a14c"/><stop offset="100%" stop-color="#f0d294"/></linearGradient></defs>
-            </svg>
-          </span>
+          <span class="hero-title-main">Shaam-e-Awadh</span>
         </h1>
-        <h2>| Lucknow Edition |</h2>
-        <span class="hero-subtitle">25 October 2026 · Lucknow</span>
+        <h2 class="hero-tagline">
+          <span>Kavi Sammelan</span><i aria-hidden="true">◆</i><span>Cultural Experience</span><i aria-hidden="true">◆</i><span>Ratna Samman</span>
+        </h2>
 
-        <div class="hero-brands hero-brands-bottom">
-          <div class="hero-brand-item">
-            <p class="eyebrow">An Initiative By</p>
-            <img src="https://timeslanguages.in/assets/timeslang/assets/langlive.png" alt="Times Languages" />
-          </div>
+        <div class="hero-meta">
+          <span class="hero-meta-item"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>27 November 2026</span>
+          <span class="hero-meta-item"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Lucknow</span>
         </div>
 
-        <p>An extraordinary evening where Awadh ki tehzeeb meets the timeless power of Hindi kavya. Experience poetry, cultural performances, and the felicitation of Lucknow's finest, all in one grand mehfil.</p>
+        <p class="hero-desc">An extraordinary evening where Awadh ki tehzeeb meets the timeless power of Hindi kavya. Experience poetry, cultural performances, and the felicitation of Lucknow's finest, all in one grand mehfil.</p>
 
         <div class="actions">
           <a class="btn primary" href="#register">Register Interest</a>
           <a class="btn ghost" href="#partners">Partner With Us</a>
         </div>
-        <p class="hero-note">Entry is subject to registration confirmation, venue capacity and organiser approval.</p>
+
+        <div class="hero-foot">
+          <div class="hero-initiative">
+            <span class="hero-initiative-label">An Initiative By</span>
+            <img src="https://timeslanguages.in/assets/timeslang/assets/langlive.png" alt="Times Languages" />
+          </div>
+          <p class="hero-note">Entry is subject to registration confirmation, venue capacity and organiser approval.</p>
+        </div>
       </div>
       <div class="hero-image reveal-right">
-        <img src="hero_kavi.png" alt="Grand Shaam-e-Awadh: Poetry Performance" fetchpriority="high" loading="eager" />
+        <img src="hero_kavi.jpg" width="1678" height="937" alt="Grand Shaam-e-Awadh: Poetry Performance" fetchpriority="high" decoding="async" />
       </div>
     </section>
 
@@ -248,7 +228,7 @@
         <p>The Navbharat Times Kavi Sammelan Series is a premium multi-city cultural platform, bringing Hindi poetry, humour, culture and city pride to a grand auditorium experience across India's most culturally rich cities.</p>
         <p>More than a stage event, it's a modern media-led format where the warmth of a live mehfil meets the reach of digital and social amplification. Every edition is curated for quality, cultural authenticity and a family-friendly experience.</p>
         <div class="intro-image">
-          <img src="heritage_manuscript.jpg" alt="Heritage Poetry Manuscript" loading="lazy" />
+          <img src="heritage_manuscript.jpg" width="1200" height="896" alt="Heritage Poetry Manuscript" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
@@ -291,7 +271,7 @@
           <h4>Jahan Lucknow ki tehzeeb milti hai Hindi kavya ki taaqat se.</h4>
           <p>Lucknow, one of India's most culturally rich Hindi-speaking cities. Home to tehzeeb, poetry, music, humour, cuisine and refined public life. A city where language is art, and every gathering carries the grace of a tradition centuries old.</p>
           <p>Grand Shaam-e-Awadh celebrates this cultural soul through a dignified, premium and family-friendly evening, where prominent citizens, cultural voices, professionals and literature lovers come together for an unforgettable mehfil.</p>
-          <p style="font-style: italic; color: var(--gold); font-family: var(--serif); margin-top: 24px; font-size: 1.05rem;">Celebrating Lucknow's language, laughter, legacy and leadership.</p>
+          <p class="city-quote">Celebrating Lucknow's language, laughter, legacy and leadership.</p>
         </div>
       </article>
     </section>
@@ -384,17 +364,17 @@
         <h2>Proposed City Journey</h2>
       </div>
       <div class="city-tabs reveal" role="tablist">
-        <button class="active" data-city="lucknow">Lucknow<span>Oct 2026</span></button>
-        <button data-city="bhopal">Bhopal<span>Nov 2026</span></button>
-        <button data-city="jaipur">Jaipur<span>Jan/Feb 2027</span></button>
-        <button data-city="patna">Patna<span>Jan/Feb 2027</span></button>
-        <button data-city="delhi">Delhi<span>Mar 2027</span></button>
+        <button type="button" class="active" data-city="lucknow" aria-pressed="true">Lucknow<span>27 Nov 2026</span></button>
+        <button type="button" data-city="bhopal" aria-pressed="false">Bhopal<span>Nov 2026</span></button>
+        <button type="button" data-city="jaipur" aria-pressed="false">Jaipur<span>Jan/Feb 2027</span></button>
+        <button type="button" data-city="patna" aria-pressed="false">Patna<span>Jan/Feb 2027</span></button>
+        <button type="button" data-city="delhi" aria-pressed="false">Delhi<span>Mar 2027</span></button>
       </div>
       <article class="city-panel reveal">
-        <div class="city-copy" style="grid-column: 1 / -1; text-align: center; padding: 50px;">
-          <p class="eyebrow" id="city-date">October 2026</p>
-          <h3 id="city-name" style="font-size: 3.5rem; color: var(--wine); margin-bottom: 8px;">Lucknow</h3>
-          <h4 id="city-tagline" style="font-family: var(--serif-deva); color: var(--wine); font-size: 1.15rem;">Grand Shaam-e-Awadh | City of Tehzeeb</h4>
+        <div class="city-copy city-copy-single">
+          <p class="eyebrow" id="city-date">27 November 2026</p>
+          <h3 id="city-name">Lucknow</h3>
+          <h4 id="city-tagline">Grand Shaam-e-Awadh | City of Tehzeeb</h4>
         </div>
       </article>
       <p class="city-disclaimer reveal">City order, dates and venues will be confirmed closer to each edition.</p>
@@ -408,7 +388,7 @@
         <h2>A curated evening of culture, poetry & celebration.</h2>
         <p>Every edition is designed as a 3–4 hour premium experience at a reputed auditorium, where venue, stage, lighting, seating and guest flow come together for a refined and memorable cultural evening.</p>
         <div class="flow-image">
-          <img src="event_moments.png" alt="Cultural performance at Grand Shaam-e-Awadh" loading="lazy" />
+          <img src="event_moments.jpg" width="1374" height="1145" alt="Cultural performance at Grand Shaam-e-Awadh" loading="lazy" decoding="async" />
         </div>
       </div>
       <div>
@@ -563,21 +543,21 @@
         <p class="eyebrow" style="color: var(--gold2);">Partnership</p>
         <h2>Celebrate Hindi, culture and city pride with us.</h2>
         <p>If your brand seeks meaningful engagement with premium Hindi-speaking audiences through a trusted, cultural and family-friendly platform, Grand Shaam-e-Awadh offers a distinctive partnership opportunity.</p>
-        <p style="font-style: italic; color: var(--gold2); font-family: var(--serif); margin-top: 24px;">Let your brand be remembered not just for visibility, but for celebrating the emotions, elegance and cultural spirit of Lucknow.</p>
+        <p class="partner-quote">Let your brand be remembered not just for visibility, but for celebrating the emotions, elegance and cultural spirit of Lucknow.</p>
       </div>
       <div class="tier-box reveal">
-        <div class="partner-form-wrap" style="margin-top: 0; padding-top: 0; border-top: none;">
+        <div class="partner-form-wrap partner-form-flush">
           <h4>Partnership Enquiry</h4>
           <form id="partner-form" novalidate>
             <div class="grid-2">
-              <label>Name<input type="text" name="p-name" required></label>
-              <label>Organisation<input type="text" name="p-org" required></label>
+              <label>Name<input type="text" name="p-name" autocomplete="name" required></label>
+              <label>Organisation<input type="text" name="p-org" autocomplete="organization" required></label>
             </div>
             <div class="grid-2">
               <label>Designation<input type="text" name="p-designation"></label>
-              <label>Mobile<input type="tel" name="p-mobile" required></label>
+              <label>Mobile<input type="tel" name="p-mobile" inputmode="tel" autocomplete="tel" required></label>
             </div>
-            <label>Email<input type="email" name="p-email" required></label>
+            <label>Email<input type="email" name="p-email" inputmode="email" autocomplete="email" required></label>
             <div class="grid-2">
               <label>Brand Category<input type="text" name="p-category"></label>
               <label>City of Interest
@@ -609,10 +589,10 @@
       </div>
       <form id="interest-form" class="reveal" novalidate>
         <div class="grid-2">
-          <label>Name<input type="text" name="name" required></label>
-          <label>Mobile<input type="tel" name="mobile" required></label>
+          <label>Name<input type="text" name="name" autocomplete="name" required></label>
+          <label>Mobile<input type="tel" name="mobile" inputmode="tel" autocomplete="tel" required></label>
         </div>
-        <label>Email<input type="email" name="email" required></label>
+        <label>Email<input type="email" name="email" inputmode="email" autocomplete="email" required></label>
         <div class="grid-2">
           <label>City
             <select name="city" required>
@@ -717,7 +697,7 @@
         </details>
         <details class="faq-item reveal">
           <summary>When and where is the event?</summary>
-          <p>The event is scheduled for 25 October 2026 in Lucknow. The specific venue will be announced closer to the date and is subject to finalisation.</p>
+          <p>The event is scheduled for 27 November 2026 in Lucknow. The specific venue will be announced closer to the date and is subject to finalisation.</p>
         </details>
         <details class="faq-item reveal">
           <summary>How can I register for the event?</summary>

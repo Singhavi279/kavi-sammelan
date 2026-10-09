@@ -3,34 +3,37 @@
    Lightweight, performance-conscious JS
    ═══════════════════════════════════════════════ */
 
-// --- Loader: Fast dismiss ---
-window.addEventListener('load', () => {
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      const loader = document.getElementById('loader');
-      if (loader) loader.classList.add('hidden');
-    }, 600);
-  });
-});
+// --- Loader: fast dismiss, with a safety net if `load` is slow (e.g. 3G) ---
+const hideLoader = () => {
+  const loader = document.getElementById('loader');
+  if (loader) loader.classList.add('hidden');
+};
+window.addEventListener('load', () => setTimeout(hideLoader, 300));
+setTimeout(hideLoader, 2500);
 
 // --- Mobile Navigation ---
 const menuButton = document.querySelector('.menu');
 const nav = document.querySelector('nav');
+const navQuery = window.matchMedia('(max-width: 1100px)');
+
+const setNav = (open) => {
+  if (!menuButton || !nav) return;
+  nav.classList.toggle('open', open);
+  document.body.classList.toggle('nav-open', open);
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.textContent = open ? '✕' : '☰';
+};
 
 if (menuButton && nav) {
-  menuButton.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.textContent = open ? '✕' : '☰';
+  menuButton.addEventListener('click', () => setNav(!nav.classList.contains('open')));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNav(false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      setNav(false);
+      menuButton.focus();
+    }
   });
-
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuButton.textContent = '☰';
-    });
-  });
+  navQuery.addEventListener('change', e => { if (!e.matches) setNav(false); });
 }
 
 // --- Header scroll state ---
@@ -87,7 +90,7 @@ if (!prefersReducedMotion) {
 // --- City Tabs ---
 const cities = {
   lucknow: {
-    date: 'October 2026',
+    date: '27 November 2026',
     name: 'Lucknow',
     tagline: 'Grand Shaam-e-Awadh | City of Tehzeeb',
   },
@@ -115,8 +118,12 @@ const cities = {
 
 document.querySelectorAll('.city-tabs button').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.city-tabs button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.city-tabs button').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     const c = cities[btn.dataset.city];
     const dateEl = document.getElementById('city-date');
     const nameEl = document.getElementById('city-name');
